@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description"
+    content="Pizza Fraction Adventure — a fun educational game where kids slice pizzas to learn fractions!" />
+  <title>🍕 Pizza Fraction Adventure - 12 Levels</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Decorative floating background elements -->
+  <div class="bg-decor star1">⭐</div>
+  <div class="bg-decor star2">🌟</div>
+  <div class="bg-decor star3">✨</div>
+  <div class="bg-decor pizza-float1">🍕</div>
+  <div class="bg-decor pizza-float2">🍅</div>
+  <div class="bg-decor pizza-float3">🧀</div>
+  <div class="bg-decor cloud1">☁️</div>
+  <div class="bg-decor cloud2">☁️</div>
+
+  <div id="app">
+
+    <!-- ===== START SCREEN ===== -->
+    <div id="startScreen" class="screen">
+      <div class="top-controls">
+        <button class="btn-icon" id="btnSoundStart" title="Sound on/off">🔊</button>
+      </div>
+      <div class="start-inner">
+        <!-- Mascot -->
+        <div class="mascot-big">
+          <div class="mascot-hat"></div>
+          <div class="mascot-body">
+            <div class="mascot-face">
+              <div class="m-eye left"></div>
+              <div class="m-eye right"></div>
+              <div class="m-smile"></div>
+              <div class="m-blush left"></div>
+              <div class="m-blush right"></div>
+              <div class="m-highlight"></div>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="start-title">🍕 Pizza Fraction Adventure</h1>
+        <p class="start-tagline">Learn Fractions • Slice • Play • Have Fun!</p>
+
+        <button class="btn-start" id="btnStartGame">
+          ▶ START GAME
+        </button>
+        <button class="btn-secondary" id="btnHowToPlay">
+          📚 HOW TO PLAY
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== HOW TO PLAY SCREEN ===== -->
+    <div id="howToPlayScreen" class="screen hidden">
+      <div class="panel-inner">
+        <h2>How to Play</h2>
+        <ul class="how-to-list">
+          <li><strong>Slice:</strong> Drag from the center of the pizza outward to cut slices.</li>
+          <li><strong>Shade:</strong> Tap a slice to add cheese and shade it.</li>
+          <li><strong>Learn:</strong> Complete challenges to learn about fractions!</li>
+          <li><strong>Earn Stars:</strong> Get stars for every level you complete!</li>
+        </ul>
+        <button class="btn-start" id="btnHowToBack">Back to Menu</button>
+      </div>
+    </div>
+
+    <!-- ===== LEVEL MAP SCREEN ===== -->
+    <div id="levelMapScreen" class="screen hidden">
+      <div class="top-controls">
+        <button class="btn-icon" id="btnSoundMap" title="Sound on/off">🔊</button>
+      </div>
+      <div class="map-inner">
+        <h1 class="map-title">🗺️ Choose a Level</h1>
+        <div class="level-grid" id="levelGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== GAME SCREEN ===== -->
+    <div id="gameScreen" class="screen hidden">
+      <!-- Top bar -->
+      <div class="game-topbar">
+        <div class="topbar-left">
+          <button class="btn-icon" id="btnBackToMap" title="Back to Map">🔙</button>
+          <div class="score-badge">
+            <span class="score-icon">🏆</span>
+            <span class="score-num" id="scoreDisplay">0</span>
+          </div>
+          <div class="streak-badge" id="streakBadge" style="display:none">
+            <span id="streakEmoji">🔥</span>
+            <span id="streakDisplay">0</span>
+          </div>
+        </div>
+        <h1 class="game-title" id="levelTitleDisplay">Level 1: Slice It</h1>
+        <div class="topbar-right">
+          <button class="btn-icon" id="btnSoundGame" title="Sound on/off">🔊</button>
+          <button class="btn-icon btn-restart" id="btnReset" title="Restart Level">↺</button>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="progress-bar-wrapper">
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <span class="progress-label" id="challengeCounter">Challenge 1 / 5</span>
+        <div id="timerContainer" class="timer-container hidden">⏱️ <span id="timeDisplay">60</span>s</div>
+      </div>
+
+      <!-- Challenge card -->
+      <div class="challenge-card">
+        <div class="challenge-card-header">
+          🍕 PIZZA CHALLENGE
+        </div>
+        <div class="challenge-body">
+          <div class="fraction-big" id="fractionDisplay">
+            <span class="frac-n" id="fracNumerator">2</span>
+            <div class="frac-bar"></div>
+            <span class="frac-d" id="fracDenominator">3</span>
+          </div>
+          <div class="challenge-desc">
+            <p class="challenge-text" id="challengeText">Cut into 3 equal pieces, then shade 2.</p>
+            <div class="progress-pips" id="progressPips">
+              <div class="pip-row" id="pipRowCuts">
+                <span class="pip-icon">✂️</span>
+                <div class="pip-dot" id="pipCuts"></div>
+                <span class="pip-label" id="pipCutsLabel">0 / 2 cuts</span>
+              </div>
+              <div class="pip-row" id="pipRowShading">
+                <span class="pip-icon">🎨</span>
+                <div class="pip-dot" id="pipShading"></div>
+                <span class="pip-label" id="pipShadingLabel">0 / 2 shaded</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Game Area (Level specific UI is injected here) -->
+      <div class="pizza-mascot-row" id="gameArea">
+      </div>
+
+      <!-- General Game Buttons (Undo, Check, Next) -->
+      <div class="game-buttons" id="actionButtons">
+        <button class="gbtn gbtn-undo" id="btnUndo" disabled>✂️ Undo</button>
+        <button class="gbtn gbtn-check" id="btnCheck" disabled>✔ Check!</button>
+      </div>
+      
+      <!-- Persistent Next Button overlay -->
+      <div class="next-button-container hidden" id="nextButtonContainer">
+        <button class="btn-start" id="btnNextChallenge">➡️ NEXT</button>
+      </div>
+
+    </div>
+
+    <!-- ===== LEVEL COMPLETE SCREEN ===== -->
+    <div id="levelCompleteScreen" class="screen hidden">
+      <div class="completion-inner">
+        <h1 class="completion-title">Level Complete!</h1>
+        <h2 id="levelCompleteSub"></h2>
+
+        <div class="completion-score-box">
+          <div class="completion-stars" id="levelStarsDisplay">⭐⭐⭐</div>
+          <p class="completion-score-label">Score</p>
+          <p class="completion-score-num" id="levelScoreDisplay">0</p>
+        </div>
+
+        <button class="btn-start" id="btnNextLevel">NEXT LEVEL 🚀</button>
+        <button class="btn-secondary" id="btnBackToMapFromLevel">LEVEL MAP</button>
+      </div>
+    </div>
+
+    <!-- ===== GAME COMPLETION SCREEN ===== -->
+    <div id="completionScreen" class="screen hidden">
+      <div class="completion-inner">
+        <div class="completion-trophy">🏆</div>
+        <h1 class="completion-title">PIZZA FRACTION MASTER!</h1>
+
+        <div class="mascot-big celebration">
+          <div class="mascot-hat"></div>
+          <div class="mascot-body">
+            <div class="mascot-face">
+              <div class="m-eye left star-eye"></div>
+              <div class="m-eye right star-eye"></div>
+              <div class="m-smile big-smile"></div>
+              <div class="m-blush left"></div>
+              <div class="m-blush right"></div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="completion-sub">You did it! 🍕⭐</h2>
+        <div class="completion-score-box">
+          <p class="completion-score-label">Total Score</p>
+          <p class="completion-score-num" id="finalScoreDisplay">0</p>
+          <p class="completion-score-label">Total Stars Earned</p>
+          <p class="completion-score-num" id="finalStarsDisplay">0</p>
+        </div>
+
+        <button class="btn-start" id="btnPlayAgain">🎮 PLAY AGAIN</button>
+        <button class="btn-secondary" id="btnBackToMapFromEnd">LEVEL MAP</button>
+      </div>
+    </div>
+
+    <!-- Confetti / particles -->
+    <div class="confetti-container" id="confettiContainer" aria-hidden="true"></div>
+
+  </div><!-- /#app -->
+
+  <script src="game.js"></script>
+</body>
+
+</html>
