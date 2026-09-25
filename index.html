@@ -154,6 +154,17 @@
         <button class="gbtn gbtn-check" id="btnCheck" disabled>✔ Check!</button>
       </div>
       
+      <div class="game-buttons hint-button-container hidden" id="hintButtonContainer" style="margin-top:10px;">
+        <button class="gbtn gbtn-hint" id="btnHint">💡 Hint</button>
+      </div>
+
+      <!-- Hint Popup -->
+      <div id="hintPopup" class="hint-popup hidden">
+        <div class="hint-header">💡 THINK ABOUT IT!</div>
+        <div class="hint-body" id="hintText"></div>
+        <button class="btn-secondary btn-hint-close" id="btnHintClose">Got it!</button>
+      </div>
+      
       <!-- Persistent Next Button overlay -->
       <div class="next-button-container hidden" id="nextButtonContainer">
         <button class="btn-start" id="btnNextChallenge">➡️ NEXT</button>
