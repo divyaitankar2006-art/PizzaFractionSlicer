@@ -5,108 +5,228 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="description"
-    content="Pizza Fraction Adventure — a fun educational game where kids slice pizzas to learn fractions!" />
-  <title>🍕 Pizza Fraction Adventure - 12 Levels</title>
+    content="Pizza Fraction Adventure — a fun, colourful cartoon educational game where kids slice and shade delicious pizzas to master fractions!" />
+  <title>🍕 Pizza Fraction Adventure - Educational Math Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Fredoka:wght@400;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- Decorative floating background elements -->
-  <div class="bg-decor star1">⭐</div>
-  <div class="bg-decor star2">🌟</div>
-  <div class="bg-decor star3">✨</div>
-  <div class="bg-decor pizza-float1">🍕</div>
-  <div class="bg-decor pizza-float2">🍅</div>
-  <div class="bg-decor pizza-float3">🧀</div>
-  <div class="bg-decor cloud1">☁️</div>
-  <div class="bg-decor cloud2">☁️</div>
+  <!-- Cartoon Kitchen Background Elements -->
+  <div class="kitchen-shelf" aria-hidden="true">
+    <div class="shelf-item olive-oil" title="Olive Oil">🍾</div>
+    <div class="shelf-item spice-jar" title="Oregano">🌿</div>
+    <div class="shelf-item tomato" title="Fresh Tomatoes">🍅</div>
+    <div class="shelf-item cheese-wedge" title="Parmesan">🧀</div>
+    <div class="shelf-item rolling-pin" title="Rolling Pin">🥖</div>
+    <div class="shelf-item garlic" title="Garlic">🧄</div>
+    <div class="shelf-item pizza-pan" title="Pizza Pan">🍳</div>
+  </div>
+
+  <!-- Decorative floating background sparkles -->
+  <div class="bg-decor star1" aria-hidden="true">⭐</div>
+  <div class="bg-decor star2" aria-hidden="true">🌟</div>
+  <div class="bg-decor pizza-float1" aria-hidden="true">🍕</div>
+  <div class="bg-decor pizza-float2" aria-hidden="true">🍅</div>
+  <div class="bg-decor basil-float1" aria-hidden="true">🍃</div>
 
   <div id="app">
 
     <!-- ===== START SCREEN ===== -->
     <div id="startScreen" class="screen">
       <div class="top-controls">
-        <button class="btn-icon" id="btnSoundStart" title="Sound on/off">🔊</button>
+        <button class="btn-icon btn-music" id="btnMusicStart" title="Music on/off">🎵</button>
+        <button class="btn-icon btn-sound" id="btnSoundStart" title="Sound Effects on/off">🔊</button>
       </div>
-      <div class="start-inner">
-        <!-- Mascot -->
-        <div class="mascot-big">
-          <div class="mascot-hat"></div>
-          <div class="mascot-body">
-            <div class="mascot-face">
-              <div class="m-eye left"></div>
-              <div class="m-eye right"></div>
-              <div class="m-smile"></div>
-              <div class="m-blush left"></div>
-              <div class="m-blush right"></div>
-              <div class="m-highlight"></div>
+
+      <div class="start-inner wood-frame">
+        <!-- Logo -->
+        <div class="game-logo">
+          <div class="logo-badge">
+            <span class="logo-icon-left">🍕</span>
+            <div class="logo-text-wrap">
+              <span class="logo-sub">CHEF'S SPECIAL</span>
+              <h1 class="logo-main">PIZZA FRACTION</h1>
+              <span class="logo-adventure">★ ADVENTURE ★</span>
             </div>
+            <span class="logo-icon-right">🍕</span>
           </div>
         </div>
 
-        <h1 class="start-title">🍕 Pizza Fraction Adventure</h1>
-        <p class="start-tagline">Learn Fractions • Slice • Play • Have Fun!</p>
+        <!-- Big Chef Mascot -->
+        <div class="mascot-big-wrap">
+          <svg class="chef-svg" viewBox="0 0 160 210" width="150" height="195" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Hat -->
+            <g class="chef-hat-group">
+              <path d="M46 50 C36 50, 26 36, 40 22 C46 14, 60 10, 72 16 C80 6, 96 6, 104 15 C116 10, 130 18, 126 30 C135 38, 130 50, 116 52 Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.15))"/>
+              <path d="M48 50 L114 50 L110 64 L52 64 Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+              <rect x="50" y="60" width="62" height="11" rx="3" fill="#E63946"/>
+              <path d="M81 62 L82.5 65.5 L86 66 L83.5 68.5 L84 72 L81 70 L78 72 L78.5 68.5 L76 66 L79.5 65.5 Z" fill="#FFD93D"/>
+            </g>
+            <!-- Body -->
+            <g class="chef-body-group">
+              <path d="M46 138 L116 138 L124 196 C124 202, 118 206, 112 206 L50 206 C44 206, 38 202, 38 196 Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+              <path d="M64 136 L98 136 L92 150 L81 160 L70 150 Z" fill="#E63946"/>
+              <circle cx="81" cy="143" r="5" fill="#C0392B"/>
+              <circle cx="68" cy="168" r="4" fill="#334155"/>
+              <circle cx="94" cy="168" r="4" fill="#334155"/>
+              <circle cx="68" cy="186" r="4" fill="#334155"/>
+              <circle cx="94" cy="186" r="4" fill="#334155"/>
+            </g>
+            <!-- Head & Face -->
+            <g class="chef-head-group">
+              <circle cx="48" cy="106" r="7" fill="#FBD38D"/>
+              <circle cx="114" cy="106" r="7" fill="#FBD38D"/>
+              <ellipse cx="81" cy="104" rx="35" ry="33" fill="#FEEBC8" stroke="#F6AD55" stroke-width="2"/>
+              <path d="M48 94 C44 98, 44 104, 48 108" stroke="#78350F" stroke-width="4" stroke-linecap="round"/>
+              <path d="M114 94 C118 98, 118 104, 114 108" stroke="#78350F" stroke-width="4" stroke-linecap="round"/>
+              <ellipse cx="60" cy="112" rx="7" ry="4" fill="#FEB2B2" opacity="0.85"/>
+              <ellipse cx="102" cy="112" rx="7" ry="4" fill="#FEB2B2" opacity="0.85"/>
+              <g class="chef-eyes">
+                <ellipse cx="66" cy="100" rx="5.5" ry="7.5" fill="#1E293B"/>
+                <ellipse cx="96" cy="100" rx="5.5" ry="7.5" fill="#1E293B"/>
+                <circle cx="64" cy="98" r="2.2" fill="#FFFFFF"/>
+                <circle cx="94" cy="98" r="2.2" fill="#FFFFFF"/>
+                <circle cx="67" cy="103" r="1.1" fill="#FFFFFF"/>
+                <circle cx="97" cy="103" r="1.1" fill="#FFFFFF"/>
+                <path d="M60 88 Q66 84 72 88" stroke="#78350F" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path d="M90 88 Q96 84 102 88" stroke="#78350F" stroke-width="3" stroke-linecap="round" fill="none"/>
+              </g>
+              <path d="M81 115 C73 109, 58 113, 56 120 C66 122, 75 118, 81 115 Z" fill="#78350F"/>
+              <path d="M81 115 C89 109, 104 113, 106 120 C96 122, 87 118, 81 115 Z" fill="#78350F"/>
+              <circle cx="81" cy="111" r="3.5" fill="#F6AD55"/>
+              <path d="M72 122 Q81 133 90 122 Z" fill="#991B1B"/>
+              <path d="M75 123 Q81 127 87 123" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none"/>
+            </g>
+            <!-- Hands -->
+            <g class="chef-arms-group">
+              <path d="M44 146 Q30 152 22 138" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+              <circle cx="20" cy="134" r="8" fill="#FEEBC8"/>
+              <path d="M12 118 L22 160" stroke="#92400E" stroke-width="4.5" stroke-linecap="round"/>
+              <ellipse cx="10" cy="110" rx="14" ry="12" fill="#D97706" stroke="#92400E" stroke-width="2" transform="rotate(-15 10 110)"/>
+              <circle cx="10" cy="110" r="9" fill="#E67E22"/>
+              <circle cx="10" cy="110" r="7.5" fill="#F1C40F"/>
+              <path d="M118 146 Q132 152 138 139" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+              <circle cx="140" cy="135" r="8" fill="#FEEBC8"/>
+              <path d="M148 124 L150 128 L154 130 L150 132 L148 136 L146 132 L142 130 L146 128 Z" fill="#FFD93D"/>
+            </g>
+          </svg>
+        </div>
 
-        <button class="btn-start" id="btnStartGame">
-          ▶ START GAME
-        </button>
-        <button class="btn-secondary" id="btnHowToPlay">
-          📚 HOW TO PLAY
-        </button>
+        <p class="start-tagline">✨ Slice • Shade • Master Fractions • Have Fun! ✨</p>
+
+        <div class="start-buttons">
+          <button class="btn-start" id="btnStartGame">
+            <span class="btn-icon-inside">🎮</span> PLAY NOW!
+          </button>
+          <button class="btn-secondary" id="btnHowToPlay">
+            <span class="btn-icon-inside">📖</span> HOW TO PLAY
+          </button>
+        </div>
       </div>
     </div>
 
     <!-- ===== HOW TO PLAY SCREEN ===== -->
     <div id="howToPlayScreen" class="screen hidden">
-      <div class="panel-inner">
-        <h2>How to Play</h2>
-        <ul class="how-to-list">
-          <li><strong>Slice:</strong> Drag from the center of the pizza outward to cut slices.</li>
-          <li><strong>Shade:</strong> Tap a slice to add cheese and shade it.</li>
-          <li><strong>Learn:</strong> Complete challenges to learn about fractions!</li>
-          <li><strong>Earn Stars:</strong> Get stars for every level you complete!</li>
-        </ul>
-        <button class="btn-start" id="btnHowToBack">Back to Menu</button>
+      <div class="panel-inner wood-frame">
+        <div class="panel-header-badge">
+          <h2>📖 How to Play</h2>
+        </div>
+        <div class="how-to-cards">
+          <div class="how-card">
+            <div class="how-card-icon">🔪</div>
+            <div class="how-card-text">
+              <h3>1. Slice the Pizza</h3>
+              <p>Drag the cartoon cutter from the center outward to slice the pizza into equal parts!</p>
+            </div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">🎨</div>
+            <div class="how-card-text">
+              <h3>2. Shade the Slices</h3>
+              <p>Tap a slice to add delicious melted cheese and highlight it according to the numerator!</p>
+            </div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">💡</div>
+            <div class="how-card-text">
+              <h3>3. Master Fractions</h3>
+              <p>Learn 1/2, 1/4, 3/4, 2/3, 5/8 and solve fun math pizza recipes!</p>
+            </div>
+          </div>
+          <div class="how-card">
+            <div class="how-card-icon">⭐</div>
+            <div class="how-card-text">
+              <h3>4. Earn Golden Stars</h3>
+              <p>Pass challenges to unlock new pizzeria levels and become a Master Chef!</p>
+            </div>
+          </div>
+        </div>
+        <button class="btn-start" id="btnHowToBack">🔙 BACK TO MENU</button>
       </div>
     </div>
 
     <!-- ===== LEVEL MAP SCREEN ===== -->
     <div id="levelMapScreen" class="screen hidden">
       <div class="top-controls">
-        <button class="btn-icon" id="btnSoundMap" title="Sound on/off">🔊</button>
+        <button class="btn-icon btn-music" id="btnMusicMap" title="Music on/off">🎵</button>
+        <button class="btn-icon btn-sound" id="btnSoundMap" title="Sound Effects on/off">🔊</button>
       </div>
-      <div class="map-inner">
-        <h1 class="map-title">🗺️ Choose a Level</h1>
+      <div class="map-inner wood-frame">
+        <div class="panel-header-badge">
+          <h1 class="map-title">🗺️ Choose Your Pizza Challenge</h1>
+        </div>
+        <p class="map-subtitle">Select an unlocked level to cook delicious fraction pizzas!</p>
         <div class="level-grid" id="levelGrid">
           <!-- Populated by JS -->
         </div>
       </div>
     </div>
 
-    <!-- ===== GAME SCREEN ===== -->
+    <!-- ===== GAME SCREEN (SINGLE SCREEN COMPACT LAYOUT) ===== -->
     <div id="gameScreen" class="screen hidden">
-      <!-- Top bar -->
-      <div class="game-topbar">
+
+      <!-- 1. TOP SECTION: Logo, Level, Score, Sound, Home -->
+      <header class="game-topbar wood-topbar">
         <div class="topbar-left">
-          <button class="btn-icon" id="btnBackToMap" title="Back to Map">🔙</button>
-          <div class="score-badge">
-            <span class="score-icon">🏆</span>
-            <span class="score-num" id="scoreDisplay">0</span>
+          <button class="btn-icon btn-nav" id="btnBackToMap" title="Back to Map">🏠</button>
+          <div class="badge-item score-badge">
+            <span class="badge-icon">🏆</span>
+            <div class="badge-info">
+              <span class="badge-label">SCORE</span>
+              <span class="score-num" id="scoreDisplay">0</span>
+            </div>
           </div>
-          <div class="streak-badge" id="streakBadge" style="display:none">
-            <span id="streakEmoji">🔥</span>
-            <span id="streakDisplay">0</span>
+          <div class="badge-item streak-badge" id="streakBadge" style="display:none">
+            <span class="badge-icon" id="streakEmoji">🔥</span>
+            <div class="badge-info">
+              <span class="badge-label">STREAK</span>
+              <span class="streak-num" id="streakDisplay">0</span>
+            </div>
           </div>
         </div>
-        <h1 class="game-title" id="levelTitleDisplay">Level 1: Slice It</h1>
+
+        <div class="topbar-center">
+          <div class="top-logo-badge">
+            <span class="top-logo-icon">🍕</span>
+            <span class="top-logo-text">PIZZA FRACTION</span>
+          </div>
+          <div class="level-title-badge">
+            <span class="game-title" id="levelTitleDisplay">Level 1: Slice It</span>
+          </div>
+        </div>
+
         <div class="topbar-right">
-          <button class="btn-icon" id="btnSoundGame" title="Sound on/off">🔊</button>
+          <button class="btn-icon btn-music" id="btnMusicGame" title="Music on/off">🎵</button>
+          <button class="btn-icon btn-sound" id="btnSoundGame" title="Sound Effects on/off">🔊</button>
           <button class="btn-icon btn-restart" id="btnReset" title="Restart Level">↺</button>
         </div>
-      </div>
+      </header>
 
-      <!-- Progress bar -->
+      <!-- Compact Progress bar -->
       <div class="progress-bar-wrapper">
         <div class="progress-bar-track">
           <div class="progress-bar-fill" id="progressFill"></div>
@@ -115,109 +235,221 @@
         <div id="timerContainer" class="timer-container hidden">⏱️ <span id="timeDisplay">60</span>s</div>
       </div>
 
-      <!-- Challenge card -->
-      <div class="challenge-card">
-        <div class="challenge-card-header">
-          🍕 PIZZA CHALLENGE
-        </div>
-        <div class="challenge-body">
-          <div class="fraction-big" id="fractionDisplay">
-            <span class="frac-n" id="fracNumerator">2</span>
-            <div class="frac-bar"></div>
-            <span class="frac-d" id="fracDenominator">3</span>
+      <!-- 2. MAIN 3-COLUMN PLAY AREA (LEFT, CENTER, RIGHT) -->
+      <main class="game-main-layout" id="gameArea">
+
+        <!-- LEFT SECTION: Cute Chef Mascot, Instructions, Hint Button -->
+        <aside class="game-left-col" id="gameLeftCol">
+          <div class="mascot-bubble" id="mascotSpeech">Ciao! Let's slice! 🍕</div>
+          <div class="mascot-small-wrap" id="gameMascot">
+            <svg class="chef-svg" viewBox="0 0 160 210" width="125" height="160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Hat -->
+              <g class="chef-hat-group">
+                <path d="M46 50 C36 50, 26 36, 40 22 C46 14, 60 10, 72 16 C80 6, 96 6, 104 15 C116 10, 130 18, 126 30 C135 38, 130 50, 116 52 Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2.5"/>
+                <path d="M48 50 L114 50 L110 64 L52 64 Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+                <rect x="50" y="60" width="62" height="11" rx="3" fill="#E63946"/>
+                <path d="M81 62 L82.5 65.5 L86 66 L83.5 68.5 L84 72 L81 70 L78 72 L78.5 68.5 L76 66 L79.5 65.5 Z" fill="#FFD93D"/>
+              </g>
+              <!-- Body -->
+              <g class="chef-body-group">
+                <path d="M46 138 L116 138 L124 196 C124 202, 118 206, 112 206 L50 206 C44 206, 38 202, 38 196 Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2.5"/>
+                <path d="M64 136 L98 136 L92 150 L81 160 L70 150 Z" fill="#E63946"/>
+                <circle cx="81" cy="143" r="4.5" fill="#C0392B"/>
+                <circle cx="68" cy="168" r="3.5" fill="#334155"/>
+                <circle cx="94" cy="168" r="3.5" fill="#334155"/>
+              </g>
+              <!-- Head -->
+              <g class="chef-head-group">
+                <circle cx="48" cy="106" r="6" fill="#FBD38D"/>
+                <circle cx="114" cy="106" r="6" fill="#FBD38D"/>
+                <ellipse cx="81" cy="104" rx="35" ry="33" fill="#FEEBC8" stroke="#F6AD55" stroke-width="2"/>
+                <ellipse cx="60" cy="112" rx="7" ry="4" fill="#FEB2B2" opacity="0.85"/>
+                <ellipse cx="102" cy="112" rx="7" ry="4" fill="#FEB2B2" opacity="0.85"/>
+                <g class="chef-eyes">
+                  <ellipse cx="66" cy="100" rx="5" ry="7" fill="#1E293B"/>
+                  <ellipse cx="96" cy="100" rx="5" ry="7" fill="#1E293B"/>
+                  <circle cx="64" cy="98" r="2" fill="#FFFFFF"/>
+                  <circle cx="94" cy="98" r="2" fill="#FFFFFF"/>
+                </g>
+                <path d="M81 115 C73 109, 58 113, 56 120 C66 122, 75 118, 81 115 Z" fill="#78350F"/>
+                <path d="M81 115 C89 109, 104 113, 106 120 C96 122, 87 118, 81 115 Z" fill="#78350F"/>
+                <circle cx="81" cy="111" r="3" fill="#F6AD55"/>
+                <path d="M72 122 Q81 133 90 122 Z" fill="#991B1B"/>
+              </g>
+              <!-- Arms -->
+              <g class="chef-arms-group">
+                <path d="M44 146 Q30 152 22 138" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/>
+                <circle cx="20" cy="134" r="7" fill="#FEEBC8"/>
+                <path d="M118 146 Q132 152 138 139" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/>
+                <circle cx="140" cy="135" r="7" fill="#FEEBC8"/>
+                <path d="M148 124 L150 128 L154 130 L150 132 L148 136 L146 132 L142 130 L146 128 Z" fill="#FFD93D"/>
+              </g>
+            </svg>
           </div>
-          <div class="challenge-desc">
-            <p class="challenge-text" id="challengeText">Cut into 3 equal pieces, then shade 2.</p>
-            <div class="progress-pips" id="progressPips">
-              <div class="pip-row" id="pipRowCuts">
-                <span class="pip-icon">✂️</span>
-                <div class="pip-dot" id="pipCuts"></div>
-                <span class="pip-label" id="pipCutsLabel">0 / 2 cuts</span>
+          <div class="left-action-box" id="hintButtonContainer">
+            <button class="gbtn gbtn-hint" id="btnHint">
+              <span class="btn-emoji">💡</span> Need a Hint?
+            </button>
+          </div>
+        </aside>
+
+        <!-- CENTER SECTION: Large Cartoon Pizza, Cutting Area, Knife Interaction -->
+        <section class="game-center-col" id="gameCenterCol">
+          <!-- Main Interactive Pizza -->
+          <div class="pizza-wrapper" id="pizzaWrapper">
+            <canvas id="pizzaCanvas" class="cutting-active" role="img" aria-label="Interactive pizza for cutting and shading"></canvas>
+          </div>
+
+          <!-- Special Game Area (Dual Pizzas / Match Pizzas / Math Blackboard) -->
+          <div id="specialGameArea" class="special-area hidden" style="display: none;">
+            <div id="dualPizzaContainer" class="dual-pizza hidden" style="display: none;">
+              <div class="pizza-side">
+                <canvas id="pizzaCanvasA"></canvas>
+                <div class="pizza-label" id="labelPizzaA">Pizza A</div>
               </div>
-              <div class="pip-row" id="pipRowShading">
-                <span class="pip-icon">🎨</span>
-                <div class="pip-dot" id="pipShading"></div>
-                <span class="pip-label" id="pipShadingLabel">0 / 2 shaded</span>
+              <div class="dual-operator-badge" id="dualOperatorBadge">VS</div>
+              <div class="pizza-side">
+                <canvas id="pizzaCanvasB"></canvas>
+                <div class="pizza-label" id="labelPizzaB">Pizza B</div>
               </div>
             </div>
+            <div id="matchPizzaContainer" class="match-pizza hidden" style="display: none;"></div>
+            <div id="mathVisualCard" class="math-chalkboard hidden" style="display: none;">
+              <div class="chalk-header">
+                <span class="chalk-icon" id="chalkIcon">📚</span>
+                <span class="chalk-title" id="chalkTitle">KITCHEN MATH</span>
+              </div>
+              <div class="chalk-equation-wrap hidden" id="chalkEquationWrap">
+                <div class="chalk-equation" id="chalkEquation"></div>
+              </div>
+              <div class="chalk-desc" id="mathVisualDesc">Solve the fraction puzzle!</div>
+              <div class="chalk-mc-container" id="chalkMCContainer"></div>
+            </div>
           </div>
+
+          <!-- Feedback Overlay centered over Center Play Area -->
+          <div class="feedback-overlay" id="feedbackOverlay" aria-live="assertive">
+            <div class="feedback-emoji" id="feedbackEmoji"></div>
+            <div class="feedback-msg" id="feedbackText"></div>
+            <div class="feedback-edu" id="feedbackEducational"></div>
+            <div class="feedback-stars" id="feedbackStars"></div>
+          </div>
+        </section>
+
+        <!-- RIGHT SECTION: Current Question, Fraction Display, Answer Options -->
+        <aside class="game-right-col" id="gameRightCol">
+          <div class="challenge-card wood-panel">
+            <div class="wood-corner tl"></div>
+            <div class="wood-corner tr"></div>
+            <div class="wood-corner bl"></div>
+            <div class="wood-corner br"></div>
+
+            <div class="challenge-card-header">
+              <span class="header-star">★</span>
+              <span id="recipeCardTitle">RECIPE CARD</span>
+              <span class="header-star">★</span>
+            </div>
+
+            <div class="challenge-body parchment-bg">
+              <div class="fraction-big" id="fractionDisplay">
+                <span class="frac-n" id="fracNumerator">2</span>
+                <div class="frac-bar"></div>
+                <span class="frac-d" id="fracDenominator">3</span>
+                <span class="frac-caption" id="fracCaption">FRACTION</span>
+              </div>
+              <div class="challenge-desc">
+                <p class="challenge-text" id="challengeText">Cut the pizza into equal parts!</p>
+                <div class="progress-pips" id="progressPips">
+                  <div class="pip-row" id="pipRowCuts">
+                    <span class="pip-icon">🔪</span>
+                    <div class="pip-dot" id="pipCuts"></div>
+                    <span class="pip-label" id="pipCutsLabel">0 / 2 cuts</span>
+                  </div>
+                  <div class="pip-row" id="pipRowShading">
+                    <span class="pip-icon">🧀</span>
+                    <div class="pip-dot" id="pipShading"></div>
+                    <span class="pip-label" id="pipShadingLabel">0 / 2 shaded</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Answer Options for Multi-Choice / Compare / Math levels -->
+            <div id="multipleChoiceContainer" class="mc-container hidden"></div>
+          </div>
+        </aside>
+
+      </main>
+
+      <!-- 3. BOTTOM SECTION: Undo, Check Answer, Next Challenge -->
+      <footer class="game-bottom-bar">
+        <div class="action-buttons-wrap" id="actionButtons">
+          <button class="gbtn gbtn-undo" id="btnUndo" disabled>
+            <span class="btn-emoji">✂️</span> Undo Cut
+          </button>
+          <button class="gbtn gbtn-check" id="btnCheck" disabled>
+            <span class="btn-emoji">✔</span> Check Slice!
+          </button>
         </div>
-      </div>
+        <div class="next-button-container hidden" id="nextButtonContainer">
+          <button class="btn-start btn-next-pop" id="btnNextChallenge">
+            <span>➡️ NEXT CHALLENGE 🚀</span>
+          </button>
+        </div>
+      </footer>
 
-      <!-- Dynamic Game Area (Level specific UI is injected here) -->
-      <div class="pizza-mascot-row" id="gameArea">
-      </div>
-
-      <!-- General Game Buttons (Undo, Check, Next) -->
-      <div class="game-buttons" id="actionButtons">
-        <button class="gbtn gbtn-undo" id="btnUndo" disabled>✂️ Undo</button>
-        <button class="gbtn gbtn-check" id="btnCheck" disabled>✔ Check!</button>
-      </div>
-      
-      <div class="game-buttons hint-button-container hidden" id="hintButtonContainer" style="margin-top:10px;">
-        <button class="gbtn gbtn-hint" id="btnHint">💡 Hint</button>
-      </div>
-
-      <!-- Hint Popup -->
-      <div id="hintPopup" class="hint-popup hidden">
-        <div class="hint-header">💡 THINK ABOUT IT!</div>
+      <!-- Hint Modal Popup -->
+      <div id="hintPopup" class="hint-popup hidden wood-frame">
+        <div class="hint-header">💡 CHEF'S SECRET RECIPE HINT!</div>
         <div class="hint-body" id="hintText"></div>
-        <button class="btn-secondary btn-hint-close" id="btnHintClose">Got it!</button>
-      </div>
-      
-      <!-- Persistent Next Button overlay -->
-      <div class="next-button-container hidden" id="nextButtonContainer">
-        <button class="btn-start" id="btnNextChallenge">➡️ NEXT</button>
+        <button class="btn-secondary btn-hint-close" id="btnHintClose">Got it, Chef! 👍</button>
       </div>
 
     </div>
 
     <!-- ===== LEVEL COMPLETE SCREEN ===== -->
     <div id="levelCompleteScreen" class="screen hidden">
-      <div class="completion-inner">
-        <h1 class="completion-title">Level Complete!</h1>
-        <h2 id="levelCompleteSub"></h2>
+      <div class="completion-inner wood-frame">
+        <div class="completion-ribbon">
+          <h1 class="completion-title">🎉 LEVEL COMPLETE! 🎉</h1>
+        </div>
+        <h2 id="levelCompleteSub" class="level-sub-title">Great job, Junior Chef!</h2>
+
+        <div class="completion-mascot">
+          <div class="mascot-star-burst">⭐ ✨ ⭐</div>
+        </div>
 
         <div class="completion-score-box">
           <div class="completion-stars" id="levelStarsDisplay">⭐⭐⭐</div>
-          <p class="completion-score-label">Score</p>
+          <p class="completion-score-label">Level Score</p>
           <p class="completion-score-num" id="levelScoreDisplay">0</p>
         </div>
 
-        <button class="btn-start" id="btnNextLevel">NEXT LEVEL 🚀</button>
-        <button class="btn-secondary" id="btnBackToMapFromLevel">LEVEL MAP</button>
+        <div class="completion-actions">
+          <button class="btn-start" id="btnNextLevel">NEXT LEVEL 🚀</button>
+          <button class="btn-secondary" id="btnBackToMapFromLevel">🗺️ LEVEL MAP</button>
+        </div>
       </div>
     </div>
 
     <!-- ===== GAME COMPLETION SCREEN ===== -->
     <div id="completionScreen" class="screen hidden">
-      <div class="completion-inner">
+      <div class="completion-inner wood-frame grand-finale">
         <div class="completion-trophy">🏆</div>
-        <h1 class="completion-title">PIZZA FRACTION MASTER!</h1>
+        <h1 class="completion-title">MASTER PIZZA CHEF!</h1>
+        <h2 class="completion-sub">You conquered all fraction challenges! 🍕⭐</h2>
 
-        <div class="mascot-big celebration">
-          <div class="mascot-hat"></div>
-          <div class="mascot-body">
-            <div class="mascot-face">
-              <div class="m-eye left star-eye"></div>
-              <div class="m-eye right star-eye"></div>
-              <div class="m-smile big-smile"></div>
-              <div class="m-blush left"></div>
-              <div class="m-blush right"></div>
-            </div>
-          </div>
-        </div>
-
-        <h2 class="completion-sub">You did it! 🍕⭐</h2>
-        <div class="completion-score-box">
-          <p class="completion-score-label">Total Score</p>
+        <div class="completion-score-box gold-border">
+          <p class="completion-score-label">Final Total Score</p>
           <p class="completion-score-num" id="finalScoreDisplay">0</p>
           <p class="completion-score-label">Total Stars Earned</p>
           <p class="completion-score-num" id="finalStarsDisplay">0</p>
         </div>
 
-        <button class="btn-start" id="btnPlayAgain">🎮 PLAY AGAIN</button>
-        <button class="btn-secondary" id="btnBackToMapFromEnd">LEVEL MAP</button>
+        <div class="completion-actions">
+          <button class="btn-start" id="btnPlayAgain">🎮 PLAY AGAIN</button>
+          <button class="btn-secondary" id="btnBackToMapFromEnd">🗺️ LEVEL MAP</button>
+        </div>
       </div>
     </div>
 
