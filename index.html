@@ -161,7 +161,7 @@
             <div class="how-card-icon">⭐</div>
             <div class="how-card-text">
               <h3>4. Earn Golden Stars</h3>
-              <p>Pass challenges to unlock new pizzeria levels and become a Master Chef!</p>
+              <p>Pass challenges to earn golden stars and become a Master Chef!</p>
             </div>
           </div>
         </div>
@@ -179,7 +179,7 @@
         <div class="panel-header-badge">
           <h1 class="map-title">🗺️ Choose Your Pizza Challenge</h1>
         </div>
-        <p class="map-subtitle">Select an unlocked level to cook delicious fraction pizzas!</p>
+        <p class="map-subtitle">Select any level or challenge to cook delicious fraction pizzas!</p>
         <div class="level-grid" id="levelGrid">
           <!-- Populated by JS -->
         </div>
@@ -226,12 +226,20 @@
         </div>
       </header>
 
-      <!-- Compact Progress bar -->
+      <!-- Compact Progress bar with Sublevel Quick Select -->
       <div class="progress-bar-wrapper">
         <div class="progress-bar-track">
           <div class="progress-bar-fill" id="progressFill"></div>
         </div>
         <span class="progress-label" id="challengeCounter">Challenge 1 / 5</span>
+        <div class="sublevel-quick-nav" id="sublevelQuickNav" title="Jump to Challenge">
+          <span class="sublevel-quick-label">Challenge:</span>
+          <button type="button" class="sub-nav-btn" data-sub="1" title="Challenge 1">1</button>
+          <button type="button" class="sub-nav-btn" data-sub="2" title="Challenge 2">2</button>
+          <button type="button" class="sub-nav-btn" data-sub="3" title="Challenge 3">3</button>
+          <button type="button" class="sub-nav-btn" data-sub="4" title="Challenge 4">4</button>
+          <button type="button" class="sub-nav-btn" data-sub="5" title="Challenge 5">5</button>
+        </div>
         <div id="timerContainer" class="timer-container hidden">⏱️ <span id="timeDisplay">60</span>s</div>
       </div>
 

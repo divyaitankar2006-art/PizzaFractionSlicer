@@ -57,7 +57,7 @@ try {
     if (localStorage.getItem('pizza_sfx') === 'false') soundEnabled = false;
     if (localStorage.getItem('pizza_music') === 'false') musicEnabled = false;
   }
-} catch (e) {}
+} catch (e) { }
 
 function getAudioCtx() {
   if (!audioCtx) {
@@ -89,19 +89,19 @@ const BGM = {
   // 16-step upbeat cheerful cartoon Italian kitchen melody in C Major
   melody: [
     { f: 523.25, b: 130.81, d: 0.22 }, // C5, C3
-    { f: 659.25, b: null,   d: 0.20 }, // E5
+    { f: 659.25, b: null, d: 0.20 }, // E5
     { f: 783.99, b: 196.00, d: 0.22 }, // G5, G3
-    { f: 659.25, b: null,   d: 0.20 }, // E5
+    { f: 659.25, b: null, d: 0.20 }, // E5
     { f: 880.00, b: 110.00, d: 0.24 }, // A5, A2
-    { f: 783.99, b: null,   d: 0.20 }, // G5
+    { f: 783.99, b: null, d: 0.20 }, // G5
     { f: 659.25, b: 164.81, d: 0.22 }, // E5, E3
-    { f: 523.25, b: null,   d: 0.20 }, // C5
+    { f: 523.25, b: null, d: 0.20 }, // C5
     { f: 698.46, b: 174.61, d: 0.24 }, // F5, F3
-    { f: 880.00, b: null,   d: 0.20 }, // A5
+    { f: 880.00, b: null, d: 0.20 }, // A5
     { f: 1046.50, b: 130.81, d: 0.26 }, // C6, C3
-    { f: 880.00, b: null,   d: 0.20 }, // A5
-    { f: 783.99, b: 98.00,  d: 0.24 }, // G5, G2
-    { f: 659.25, b: null,   d: 0.20 }, // E5
+    { f: 880.00, b: null, d: 0.20 }, // A5
+    { f: 783.99, b: 98.00, d: 0.24 }, // G5, G2
+    { f: 659.25, b: null, d: 0.20 }, // E5
     { f: 587.33, b: 146.83, d: 0.22 }, // D5, D3
     { f: 523.25, b: 196.00, d: 0.35 }  // C5 (cheerfully sustained)
   ],
@@ -143,7 +143,7 @@ const BGM = {
         gain.connect(bgmGainNode);
         osc.start(t);
         osc.stop(t + item.d + 0.02);
-      } catch (e) {}
+      } catch (e) { }
     }
 
     // 2. Pizzicato Acoustic Bass Note
@@ -162,7 +162,7 @@ const BGM = {
         bGain.connect(bgmGainNode);
         bOsc.start(t);
         bOsc.stop(t + item.d * 1.5 + 0.02);
-      } catch (e) {}
+      } catch (e) { }
     }
   },
 
@@ -308,7 +308,7 @@ const VoiceManager = {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       try {
         window.speechSynthesis.cancel();
-      } catch (e) {}
+      } catch (e) { }
     }
 
     // 2. Play matching celebratory sound chime
@@ -332,7 +332,7 @@ const VoiceManager = {
         const voices = window.speechSynthesis.getVoices();
         if (voices && voices.length > 0) {
           const pref = voices.find(v => v.lang.startsWith('en') && (
-            v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha') || 
+            v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha') ||
             v.name.includes('Zira') || v.name.includes('Jenny') || v.name.includes('Victoria')
           )) || voices.find(v => v.lang.startsWith('en'));
           if (pref) utter.voice = pref;
@@ -349,7 +349,7 @@ const VoiceManager = {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       try {
         window.speechSynthesis.cancel();
-      } catch (e) {}
+      } catch (e) { }
     }
   }
 };
@@ -359,7 +359,7 @@ const VoiceManager = {
    ============================================================ */
 
 const sessionState = {
-  unlockedLevels: 1,
+  unlockedLevels: 16,
   levelStars: Array(16).fill(0),
   totalScore: 0,
 };
@@ -900,9 +900,9 @@ function generateToppings(r) {
     const type = types[i % types.length];
     const size = r * (
       type === 'pepperoni' ? 0.095 :
-      type === 'mushroom' ? 0.075 :
-      type === 'pepper' ? 0.065 :
-      type === 'basil' ? 0.060 : 0.042
+        type === 'mushroom' ? 0.075 :
+          type === 'pepper' ? 0.065 :
+            type === 'basil' ? 0.060 : 0.042
     );
     toppings.push({ type, angle, dist: ring * r * CFG.R_CHEESE, size, rot: Math.random() * Math.PI * 2 });
   }
@@ -1686,7 +1686,7 @@ function checkAnswer(selectedAns = null, btnEl = null) {
       nbc.classList.remove('hidden');
       try {
         nbc.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      } catch (e) {}
+      } catch (e) { }
     }
 
     // Auto-hide feedback after 2.2 seconds if user hasn't clicked Next yet
@@ -1816,6 +1816,14 @@ function updateUI() {
   el('streakBadge').style.display = state.streak >= 2 ? 'flex' : 'none';
   el('streakDisplay').textContent = state.streak;
   el('streakEmoji').textContent = ['', '🔥', '🔥🔥', '⚡', '💫', '🌟', '🚀'][Math.min(state.streak, 6)];
+
+  const quickNav = el('sublevelQuickNav');
+  if (quickNav) {
+    quickNav.querySelectorAll('.sub-nav-btn').forEach(btn => {
+      const sub = parseInt(btn.getAttribute('data-sub'), 10);
+      btn.classList.toggle('active', sub === state.challengeNumber);
+    });
+  }
 }
 
 function setMascotSpeech(text, lockMs = 1800) {
@@ -1989,30 +1997,74 @@ function switchScreen(id) {
 
 function initMap() {
   const grid = el('levelGrid');
+  if (!grid) return;
   grid.innerHTML = '';
   LEVELS.forEach((lvl, idx) => {
-    const btn = document.createElement('button');
-    btn.className = 'level-btn';
-    btn.disabled = lvl.id > sessionState.unlockedLevels;
+    const card = document.createElement('div');
+    card.className = 'level-btn';
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.title = lvl.title;
 
     let stars = sessionState.levelStars[idx] || 0;
-    if (stars > 0) btn.classList.add('completed');
+    if (stars > 0) card.classList.add('completed');
 
     let starStr = '⭐'.repeat(stars) + '☆'.repeat(3 - stars);
-    if (stars === 0 && btn.disabled) starStr = '🔒';
 
-    btn.innerHTML = `<span class="level-icon">${lvl.icon}</span>Level ${lvl.id}<div class="level-stars">${starStr}</div>`;
-    btn.onclick = () => { SoundManager.playClick(); startGameLevel(lvl.id); };
-    grid.appendChild(btn);
+    card.innerHTML = `
+      <span class="level-icon">${lvl.icon}</span>
+      <span class="level-name">Level ${lvl.id}</span>
+      <div class="level-stars">${starStr}</div>
+      <div class="sublevel-row" title="Select Sublevel 1-5">
+        <button type="button" class="sub-pill" data-sub="1" title="Level ${lvl.id} - Sublevel 1">1</button>
+        <button type="button" class="sub-pill" data-sub="2" title="Level ${lvl.id} - Sublevel 2">2</button>
+        <button type="button" class="sub-pill" data-sub="3" title="Level ${lvl.id} - Sublevel 3">3</button>
+        <button type="button" class="sub-pill" data-sub="4" title="Level ${lvl.id} - Sublevel 4">4</button>
+        <button type="button" class="sub-pill" data-sub="5" title="Level ${lvl.id} - Sublevel 5">5</button>
+      </div>
+    `;
+
+    // Clicking anywhere on card (except sub-pills) launches Sublevel 1
+    card.onclick = (e) => {
+      if (e.target && e.target.closest && e.target.closest('.sub-pill')) return;
+      SoundManager.playClick();
+      startGameLevel(lvl.id, 1);
+    };
+
+    // Keyboard support (Enter / Space) for card
+    card.onkeydown = (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (e.target && e.target.closest && e.target.closest('.sub-pill')) return;
+        e.preventDefault();
+        SoundManager.playClick();
+        startGameLevel(lvl.id, 1);
+      }
+    };
+
+    // Sub-pills click handlers
+    card.querySelectorAll('.sub-pill').forEach(pill => {
+      pill.onclick = (e) => {
+        if (e && e.stopPropagation) e.stopPropagation();
+        const sub = parseInt(pill.getAttribute('data-sub'), 10) || 1;
+        SoundManager.playClick();
+        startGameLevel(lvl.id, sub);
+      };
+    });
+
+    grid.appendChild(card);
   });
 }
 
-function startGameLevel(levelId) {
+function startGameLevel(levelId, startingSublevel = 1) {
   onFirstUserGesture();
+  if (state.timerId) {
+    clearInterval(state.timerId);
+    state.timerId = null;
+  }
   clearGameState();
   hideFeedback();
   state.currentLevel = levelId;
-  state.challengeNumber = 0;
+  state.challengeNumber = Math.max(0, Math.min(CFG.CHALLENGES_PER_LEVEL - 1, startingSublevel - 1));
   state.score = 0;
   state.streak = 0;
   const lvlDef = LEVELS[levelId - 1];
@@ -2027,6 +2079,7 @@ function startGameLevel(levelId) {
       el('timeDisplay').textContent = state.timeLeft;
       if (state.timeLeft <= 0) {
         clearInterval(state.timerId);
+        state.timerId = null;
         endLevel();
       }
     }, 1000);
@@ -2036,6 +2089,15 @@ function startGameLevel(levelId) {
 
   switchScreen('gameScreen');
   getAudioCtx();
+  startNewQuestion();
+}
+
+function jumpToSublevel(subNum) {
+  const targetSub = Math.max(1, Math.min(CFG.CHALLENGES_PER_LEVEL, parseInt(subNum, 10) || 1));
+  hideFeedback();
+  clearGameState();
+  VoiceManager.stop();
+  state.challengeNumber = targetSub - 1;
   startNewQuestion();
 }
 
@@ -2824,17 +2886,19 @@ el('btnHowToBack').addEventListener('click', () => {
 });
 
 el('btnBackToMap').addEventListener('click', () => {
-  if (state.timerId) clearInterval(state.timerId);
+  if (state.timerId) { clearInterval(state.timerId); state.timerId = null; }
   SoundManager.playClick();
   switchScreen('levelMapScreen');
   initMap();
 });
 el('btnBackToMapFromLevel').addEventListener('click', () => {
+  if (state.timerId) { clearInterval(state.timerId); state.timerId = null; }
   SoundManager.playClick();
   switchScreen('levelMapScreen');
   initMap();
 });
 el('btnBackToMapFromEnd').addEventListener('click', () => {
+  if (state.timerId) { clearInterval(state.timerId); state.timerId = null; }
   SoundManager.playClick();
   switchScreen('levelMapScreen');
   initMap();
@@ -2842,10 +2906,15 @@ el('btnBackToMapFromEnd').addEventListener('click', () => {
 
 el('btnNextLevel').addEventListener('click', () => {
   SoundManager.playClick();
-  startGameLevel(state.currentLevel + 1);
+  if (state.currentLevel < 16) {
+    startGameLevel(state.currentLevel + 1, 1);
+  } else {
+    switchScreen('levelMapScreen');
+    initMap();
+  }
 });
 el('btnPlayAgain').addEventListener('click', () => {
-  sessionState.unlockedLevels = 1;
+  sessionState.unlockedLevels = 16;
   sessionState.levelStars.fill(0);
   sessionState.totalScore = 0;
   SoundManager.playClick();
@@ -2860,7 +2929,7 @@ el('btnCheck').addEventListener('click', () => {
 
 el('btnReset').addEventListener('click', () => {
   SoundManager.playClick();
-  startGameLevel(state.currentLevel);
+  startGameLevel(state.currentLevel, state.challengeNumber || 1);
 });
 
 // Undo support for cutting AND shading
@@ -2913,6 +2982,14 @@ el('btnNextChallenge').addEventListener('click', () => {
   startNewQuestion();
 });
 
+document.querySelectorAll('.sub-nav-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sub = parseInt(btn.getAttribute('data-sub'), 10) || 1;
+    SoundManager.playClick();
+    jumpToSublevel(sub);
+  });
+});
+
 /* ============================================================
    AUDIO CONTROLS (INDEPENDENT MUSIC & SFX TOGGLES)
    ============================================================ */
@@ -2944,7 +3021,7 @@ function toggleMusic() {
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem('pizza_music', musicEnabled ? 'true' : 'false');
     }
-  } catch (e) {}
+  } catch (e) { }
   BGM.updateVolume();
   updateAudioButtons();
   if (musicEnabled) {
@@ -2962,7 +3039,7 @@ function toggleSound() {
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem('pizza_sfx', soundEnabled ? 'true' : 'false');
     }
-  } catch (e) {}
+  } catch (e) { }
   SoundManager.updateVolume();
   updateAudioButtons();
   if (soundEnabled) SoundManager.playClick();
@@ -2985,7 +3062,7 @@ function onFirstUserGesture() {
     BGM.start();
   }
   if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-    try { window.speechSynthesis.getVoices(); } catch (e) {}
+    try { window.speechSynthesis.getVoices(); } catch (e) { }
   }
 }
 if (typeof document !== 'undefined' && document.addEventListener) {
